@@ -280,10 +280,12 @@ if selected == "Contribute to Dataset":
     
     kms_driven = st.number_input("Kms Driven",min_value=0, max_value=10000000,step=1000)
 
+    price = st.number_input("Price",min_value=10000, max_value=100000000,step=10000)
+
     fuel_type = st.selectbox("Fuel Type",['Petrol','Diesel'], index=0)
 
     if st.button("Submit"):
-        to_add={"Car Name":[name], "Company":[company], "Year":[year], "Kms Driven":[kms_driven], "Fuel_type":[fuel_type]}
+        to_add={"Car Name":[name], "Company":[company], "Year":[year], "Kms Driven":[kms_driven], "Fuel_type":[fuel_type], "Price": [price]}
         to_add=pd.DataFrame(to_add)
         to_add.to_csv("Cleaned_Car_data.csv", mode = 'a', header=False, index=False)
         st.success("Submitted")
